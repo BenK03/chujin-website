@@ -66,7 +66,7 @@
     if (!id) {
       detail.innerText = 'No Portfolio ID provided.';
     } else {
-      fetch(`http://127.0.0.1:5000/api/portfolios/${id}`)
+      fetch(`https://chujin-backend-gcs1.onrender.com/api/portfolios/${id}`)
         .then(r => {
           if (!r.ok) throw new Error(`HTTP ${r.status}`);
           return r.json();
