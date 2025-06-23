@@ -1,0 +1,66 @@
+/* Underline only as wide as the "Our Portfolios" text */
+.contact-welcome-text h1 {
+  display: inline-block;         /* shrink to exactly the text’s width */
+  border-bottom: 3px solid green;/* or whatever color/thickness you want */
+  padding-bottom: 0.25rem;       /* a bit of space so the border sits just below the letters */
+}
+
+.contact-welcome-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem; /* optional: adds breathing room */
+}
+
+/* Full-width underline under entire header on portfolio.html */
+.header-inner {
+  border-bottom: 2px solid green;
+}
+
+/* existing styles above... */
+
+@media (max-width: 768px) {
+  .portfolio-welcome-text,
+  .people-welcome-text,
+  .insights-welcome-text,
+  .careers-welcome-text,
+  .contact-welcome-text {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .portfolio-welcome-text h1,
+  .people-welcome-text h1,
+  .insights-welcome-text h1,
+  .careers-welcome-text h1,
+  .contact-welcome-text h1 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+}
+
+.contact-info {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: -3rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.contact-info a {
+  color: green;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.map-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}

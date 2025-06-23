@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://127.0.0.1:5500/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <!--Holds metadata, links to stylesheets/scripts-->
+    
+    <title>Consulting Firm</title> <!--Ask what he wants the title to be-->
+    
+    
+  <link rel="stylesheet" href="./Consulting Firm_files/style.css"><link rel="icon" type="image/x-icon" href="./Consulting Firm_files/KakaoTalk_20250602_122832236.jpg"></head>
+
+  <body> <!--Everything visible on the page goes in this tag-->
+    <main id="mainContent"> <!--Searchable content-->
+    <div class="image-text"> <!--This div is for the logo (the top left of the webpage)-->
+      <img src="./Consulting Firm_files/KakaoTalk_20250602_122832236.jpg" class="icon">
+      <h3 id="Header"><b>Chu Inyoung Administrative Office <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp; Chujin Factory Co., Ltd</b></h3>
+
+    </div>
+
+    <!--Search Bar-->
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search...">
+      <button class="search-icon" onclick="searchPage()">🔍︎</button>
+    </div>
+
+
+    <!--Welcome Page-->
+    <div class="welcome-page">
+      <div class="welcome-text" style="height: 1000px; text-align: center; padding-top: 300px;">
+      <p>Welcome to <br> </p><h1>Chu Inyoung Administrative Office</h1><p></p>
+      <p><!--Write what this company does--></p>
+      </div>
+    </div>
+
+
+
+    <!--Footer (This is always at the bottom!)-->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <p>Email: chuiy@naver.com</p>
+          <p>Tel: +82-10-7191-3878</p>
+        </div>
+        <div class="footer-column">
+          <h4>Company</h4>
+          <p>About Us</p>
+          <p>Careers</p>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <p>Privacy Policy</p>
+          <p>Terms of Service</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 Chu Inyoung Administrative Office &amp; Chujin Factory Co., Ltd
+      </div>
+    </footer>
+
+    <script src="./Consulting Firm_files/script.js.download"></script>
+    </main>
+  <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>

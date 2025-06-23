@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio Detail</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../OurInsights/insights.css">
+  <link rel="stylesheet" href="../style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="../images/KakaoTalk_20250602_122832236.jpg">
+</head>
+<body>
+  <!-- Header -->
+  <header class="top-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="image-text">
+          <h2 id="Header">
+            <a href="../index.html">Chu Inyoung Administrative Office<br>&amp; Chujin Factory Co., Ltd.</a>
+          </h2>
+        </div>
+      </div>
+      <nav class="nav-bar">
+        <ul class="nav-links">
+          <li><a href="../index.html#company-portfolio">Overview</a></li>
+          <li><a href="../OurPeople/people.html">Our People</a></li>
+          <li><a href="../OurPortfolios/portfolio.html">Our Portfolios</a></li>
+          <li><a href="../OurInsights/insights.html">Our Insights</a></li>
+          <li><a href="../Careers/careers.html">Careers</a></li>
+          <li><a href="../ContactUs/contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button class="search-icon" onclick="searchPage()">🔍︎</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Detail content -->
+  <main class="insight-container" id="detail">
+    Loading…
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-column"><h4><a href="../index.html#company-portfolio">Overview</a></h4></div>
+      <div class="footer-column"><h4><a href="../OurPeople/people.html">Our People</a></h4></div>
+      <div class="footer-column"><h4><a href="../OurPortfolios/portfolio.html">Our Portfolios</a></h4></div>
+      <div class="footer-column"><h4><a href="../OurInsights/insights.html">Our Insights</a></h4></div>
+      <div class="footer-column"><h4><a href="../Careers/careers.html">Careers</a></h4></div>
+      <div class="footer-column"><h4><a href="../ContactUs/contact.html">Contact Us</a></h4></div>
+    </div>
+    <div class="footer-bottom">© 2025 Chu Inyoung Administrative Office &amp; Chujin Factory Co., Ltd.</div>
+  </footer>
+
+  <!-- Shared scripts -->
+  <script src="../script.js"></script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const id = params.get('id');
+    const detail = document.getElementById('detail');
+
+    if (!id) {
+      detail.innerText = 'No Portfolio ID provided.';
+    } else {
+      fetch(`http://127.0.0.1:5000/api/portfolios/${id}`)
+        .then(r => {
+          if (!r.ok) throw new Error(`HTTP ${r.status}`);
+          return r.json();
+        })
+        .then(p => {
+          detail.innerHTML = `
+            <article class="insight-article">
+                <div class="insight-meta">
+                <p>📝 <strong>Subject:</strong> ${p.subject}</p>
+                <p>⏰ <strong>Time:</strong> ${p.time}</p>
+                <p>👤 <strong>Author:</strong> ${p.author}</p>
+                </div>
+              <div class="insight-content">${p.content}</div>
+            </article>`;
+        })
+        .catch(() => {
+          detail.innerText = 'Portfolio item not found.';
+        });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+/* Underline only as wide as the "Our Portfolios" text */
+.people-welcome-text h1 {
+  display: inline-block;         /* shrink to exactly the text’s width */
+  border-bottom: 3px solid green;/* or whatever color/thickness you want */
+  padding-bottom: 0.25rem;       /* a bit of space so the border sits just below the letters */
+}
+
+.people-welcome-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem; /* optional: adds breathing room */
+}
+
+
+/* Full-width underline under entire header on portfolio.html */
+.header-inner {
+  border-bottom: 2px solid green;
+}
+
+/* existing styles above... */
+
+@media (max-width: 768px) {
+  .portfolio-welcome-text,
+  .people-welcome-text,
+  .insights-welcome-text,
+  .careers-welcome-text,
+  .contact-welcome-text {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .portfolio-welcome-text h1,
+  .people-welcome-text h1,
+  .insights-welcome-text h1,
+  .careers-welcome-text h1,
+  .contact-welcome-text h1 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+}
+
+.people-profile {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #fdfdfd;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.ceo-photo {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid green;
+  display: block;
+  margin: 0 auto 1rem auto;
+  margin-top: -6rem;
+}
+
+.people-profile h2, .people-profile h4 {
+  text-align: center;
+  margin: 0;
+}
+
+.people-profile h2 {
+  font-size: 2rem;
+  margin-bottom: 0.2rem;
+}
+
+.people-profile h4 {
+  color: #555;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.contact-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.contact-section a {
+  color: green;
+  text-decoration: none;
+}
+
+.people-profile section {
+  margin-bottom: 2rem;
+}
+
+.people-profile h3 {
+  color: #2d2d2d;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.people-profile ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}

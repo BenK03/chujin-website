@@ -1,0 +1,346 @@
+/* Underline only as wide as the "Our Portfolios" text */
+.insights-welcome-text h1 {
+  display: inline-block;         /* shrink to exactly the text’s width */
+  border-bottom: 3px solid green;/* or whatever color/thickness you want */
+  padding-bottom: 0.25rem;       /* a bit of space so the border sits just below the letters */
+}
+
+.insights-welcome-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem; /* optional: adds breathing room */
+}
+
+
+/* Full-width underline under entire header on portfolio.html */
+.header-inner {
+  border-bottom: 2px solid green;
+}
+
+/* existing styles above... */
+
+@media (max-width: 768px) {
+  .portfolio-welcome-text,
+  .people-welcome-text,
+  .insights-welcome-text,
+  .careers-welcome-text,
+  .contact-welcome-text {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .portfolio-welcome-text h1,
+  .people-welcome-text h1,
+  .insights-welcome-text h1,
+  .careers-welcome-text h1,
+  .contact-welcome-text h1 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+}
+
+/* Shared layout container */
+.insight-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+}
+
+.insight-section.reverse {
+  flex-direction: row-reverse;
+}
+
+
+/* ───── Responsive Layout ───── */
+@media (max-width: 768px) {
+  .insight-section,
+  .insight-section.reverse {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+
+
+
+/* ─── Scrollable 3-at-a-time Carousel ─── */
+
+/* ─── Scrollable 3-at-a-time Carousel ─── */
+.slideshow-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable both-edges;
+  max-width: 1200px;
+  margin: 2rem auto 4rem;
+  cursor: grab;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 8px; /* optional—matches individual slides’ rounding */
+  margin-top: 5rem;
+}
+
+.slideshow-container.dragging {
+  cursor: grabbing;
+}
+
+.slides-wrapper {
+  display: flex;
+  gap: 1.5%;
+}
+
+.slide {
+  flex: 0 0 calc((100% - 3 * 1.5%) / 3);
+  scroll-snap-align: start;
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.slide-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.slide-date {
+  font-size: 1rem;
+  color: green;
+}
+
+
+.insights-banner-wrapper {
+  /* keep these if you already have them */
+  position: relative;
+  overflow: visible;
+  margin-top: 14rem; /* adjust value to push down more or less */
+
+  /* add this: sufficient bottom padding to clear the lines */
+  padding-bottom: 200px;  /* ← adjust to half your extra height (200px above + 200px below) */
+}
+
+/* Ensure long content wraps within its container */
+.insight-content {
+  white-space: normal !important;
+
+  /* break long words or URLs if needed */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ─── Insight Detail Page Styling ─── */
+#detail.insight-container {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: center;          /* center headings & metadata */
+}
+
+#detail.insight-container .insight-meta {
+  display: flex;
+  flex-direction: column;   /* stack vertically */
+  align-items: flex-start;  /* left-align all items */
+  text-align: left;         /* ensure text is left-aligned */
+  gap: 0.5rem;              /* space between lines */
+  margin-bottom: 2rem;
+}
+
+#detail.insight-container .insight-meta p {
+  margin: 0;
+  font-size: 1.2rem;
+  color: black;
+}
+
+#detail.insight-container .insight-article .insight-content {
+  text-align: left;
+  font-size: 1.2rem;        /* slightly larger */
+  color: black;           /* darker text */
+  line-height: 1.6;
+  margin-top: 1.5rem;
+}
+
+#detail.insight-container h1,
+#detail.insight-container h2 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+body.admin-page a.slide-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 600px) {
+  #detail.insight-container {
+    margin: 1.5rem auto;
+    padding: 1rem;
+  }
+  #detail.insight-container .insight-meta {
+    gap: 1rem;
+  }
+}
+.insight-content {
+  white-space: pre-wrap !important;
+  word-break: break-word;
+}
+
+/* Slide links: black text, no underline */
+.slide-link {
+  color: #000;            /* black */
+  text-decoration: none;  /* remove underline */
+}
+
+.slide-link:hover {
+  text-decoration: underline; /* optional: underline on hover */
+}
+
+.insights-welcome {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.insights-banner-img {
+  width: 100%;
+  height: 87vh; /* or any height you want */
+  object-fit: cover;
+  display: block;
+  margin-top: 0rem;
+}
+
+.insights-welcome-text {
+  position: absolute;
+  top: 50%;
+  left: 5%; /* not all the way left */
+  transform: translateY(-50%);
+  color: white;
+  text-align: left;
+  z-index: 2;
+  max-width: 90%;
+}
+
+.insights-welcome-text h1 {
+  font-size: 5rem;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+  margin: 0;
+}
+
+
+.scroll-down-arrow {
+  font-size: 7rem;
+  font-weight: 900;
+  margin-top: 1.7rem;
+  animation: bounce 1.5s infinite;
+  color: #039e51;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  margin-left: 3rem;
+  -webkit-text-stroke: 1px black;
+}
+
+/* Simple bounce effect */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+
+/* Updated wave‐backsplash + carousel positioning */
+.insights-banner-wrapper {
+  position: relative;            /* stacking context */
+  background-color: #00a651;     /* green color */
+
+  /* carve top & bottom into waves */
+  clip-path: polygon(
+    /* — top wave — */
+    0% 15%,  10% 20%, 20% 12%, 30% 18%, 40% 10%,
+    50% 20%, 60% 14%, 70% 22%, 80% 16%, 90% 24%, 100% 15%,
+    /* — right edge down — */
+    100% 85%,
+    /* — bottom wave — */
+    90% 80%, 80% 88%, 70% 82%, 60% 90%, 50% 84%,
+    40% 92%, 30% 86%, 20% 94%, 10% 88%, 0% 90%
+  );
+
+  /* push content down inside wrapper */
+  padding-top: 200px;            /* original breathing room */
+  padding-bottom: 200px;         /* original bottom space */
+
+  /* pull the whole section (backsplash + carousel) up */
+  margin-top: -0px;            /* ↑ move up by 100px */
+}
+
+.slideshow-container {
+  position: relative;            /* keep slides above the wave */
+  z-index: 1;
+  
+  /* also pull the slides up so they ride along */
+  margin-top: 50px;            /* same value as wrapper’s margin-top */
+  box-shadow: 0 0px 20px rgb(7, 243, 223);
+}
+
+/* ── Pulled-up wave-backsplash + carousel ── */
+.insights-banner-wrapper {
+  position: relative;            /* stacking context */
+  background-color: #00a651;     /* green color */
+
+  /* carve top & bottom into waves */
+  clip-path: polygon(
+    /* — top wave — */
+    0% 15%, 10% 20%, 20% 12%, 30% 18%, 40% 10%,
+    50% 20%, 60% 14%, 70% 22%, 80% 16%, 90% 24%, 100% 15%,
+    /* — right edge down — */
+    100% 85%,
+    /* — bottom wave — */
+    90% 80%, 80% 88%, 70% 82%, 60% 90%, 50% 84%,
+    40% 92%, 30% 86%, 20% 94%, 10% 88%, 0% 90%
+  );
+
+  /* breathing room inside */
+  padding-top: 200px;
+  padding-bottom: 200px;
+
+  /* pull the whole section (backsplash) up */
+  margin-top: 50px;
+}
+
+.slideshow-container {
+  position: relative;            /* keep slides above the green */
+  z-index: 1;
+
+  /* pull the carousel slides up along with the backdrop */
+  margin-top: 100px;
+  padding: 2rem 0rem;
+}
+.header-inner nav ul {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none !important;
+  }
+  .nav-links.show {
+    display: flex !important;
+  }
+}
+

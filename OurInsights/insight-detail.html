@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Insight Detail</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="insights.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:wght@300;400;600&display=swap" rel="stylesheet"> <!--Imported Font-->
+  <link rel="icon" type="image/x-icon" href="../images/KakaoTalk_20250602_122832236.jpg"> <!--Logo Icon-->
+</head>
+<body>
+  <!-- Copied Header -->
+  <header class="top-header">
+    <div class="header-inner">
+
+      <div class="header-left">
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="image-text">
+          <h2 id="Header">
+            <a href="../index.html">Chu Inyoung Administrative Office<br>&amp; Chujin Factory Co., Ltd.</a>
+          </h2>
+        </div>
+      </div>
+      <!-- NAV BAR (center) -->
+      <nav class="nav-bar">
+        <ul class="nav-links">
+          <li><a href="../index.html#company-portfolio">Overview</a></li>
+          <li><a href="../OurPeople/people.html">Our People</a></li>
+          <li><a href="../OurPortfolios/portfolio.html">Our Portfolios</a></li>
+          <li><a href="insights.html">Our Insights</a></li>
+          <li><a href="../Careers/careers.html">Careers</a></li>
+          <li><a href="../ContactUs/contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- Search bar on the right -->
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button class="search-icon" onclick="searchPage()">🔍︎</button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="insight-container" id="detail">
+    Loading…
+  </main>
+
+  <!-- Copied Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+        <!-- Overview: now scrolls to the portfolio section -->
+        <div class="footer-column">
+        <h4><a href="../index.html#company-portfolio">Overview</a></h4><!-- EDITED -->
+        </div>
+        <!-- Our People (unchanged) -->
+        <div class="footer-column">
+        <h4><a href="../OurPeople/people.html">Our People</a></h4>
+        </div>
+        <!-- Our Portfolios: now redirects to portfolio.html -->
+        <div class="footer-column">
+        <h4><a href="../OurPortfolios/portfolio.html">Our Portfolios</a></h4> <!-- EDITED -->
+        </div>
+        <!-- Our Insights (unchanged) -->
+        <div class="footer-column">
+        <h4><a href="insights.html">Our Insights</a></h4>
+        </div>
+        <!-- Careers (unchanged) -->
+        <div class="footer-column">
+        <h4><a href="../Careers/careers.html">Careers</a></h4>
+        </div>
+        <!-- Contact Us (unchanged) -->
+        <div class="footer-column">
+        <h4><a href="../ContactUs/contact.html">Contact Us</a></h4>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2025 Chu Inyoung Administrative Office &amp; Chujin Factory Co., Ltd.
+    </div>
+  </footer>
+      <script src="../script.js"></script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const id = params.get('id');
+    const detail = document.getElementById('detail');
+    if (!id) {
+      detail.innerText = 'No Insight ID provided.';
+    } else {
+      fetch(`http://127.0.0.1:5000/api/posts/${id}`)
+        .then(r => r.json())
+        .then(p => {
+          detail.innerHTML = `
+            <article class="insight-article">
+                <div class="insight-meta">
+                <p>🗂️ <strong>Category:</strong> ${p.category}</p>
+                <p>📝 <strong>Subject:</strong> ${p.subject}</p>
+                <p>⏰ <strong>Time:</strong> ${p.time}</p>
+                <p>👤 <strong>Author:</strong> ${p.author}</p>
+                </div>
+              <div class="insight-content">${p.content}</div>
+            </article>`;
+        })
+        .catch(() => {
+          detail.innerText = 'Insight not found.';
+        });
+    }
+  </script>
+</body>
+</html>

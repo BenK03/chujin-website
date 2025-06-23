@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head> <!--Holds metadata, links to stylesheets/scripts-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHUJIN FACTORY CO., LTD.</title>
+    <meta name="description" content="Chujin Gongjang Corp delivers consulting services: visa applications, business licensing, civil complaint support and administrative advisory.">
+    <meta name="keywords" content="inyoung chu, 추인영, 추진공장, chujin factory, 컨설팅, consulting">
+    <link 
+      rel="preload" 
+      as="image" 
+      href="/images/matthew-henry-VviFtDJakYk-unsplash.jpg" 
+      imagesrcset="/images/matthew-henry-VviFtDJakYk-unsplash.jpg 1x, /images/matthew-henry-VviFtDJakYk-unsplash.jpg 2x" 
+      imagesizes="100vw"
+      loading="lazy" 
+    >
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/KakaoTalk_20250602_122832236.jpg"> <!--Logo Icon-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:wght@300;400;600&display=swap" rel="stylesheet"> <!--Imported Font-->
+  </head>
+
+<body> <!--Everything visible on the page goes in this tag-->
+
+<header class="top-header">
+  <div class="header-inner">
+
+    <div class="header-left">
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <div class="image-text">
+        <h2 id="Header">
+          <a href="index.html">Chu Inyoung Administrative Office<br>&amp; Chujin Factory Co., Ltd.</a>
+        </h2>
+      </div>
+    </div>
+    <!-- NAV BAR (center) -->
+    <nav class="nav-bar">
+      <ul class="nav-links">
+        <li><a href="#company-portfolio">Overview</a></li>
+        <li><a href="OurPeople/people.html">Our People</a></li>
+        <li><a href="OurPortfolios/portfolio.html">Our Portfolios</a></li>
+        <li><a href="OurInsights/insights.html">Our Insights</a></li>
+        <li><a href="Careers/careers.html">Careers</a></li>
+        <li><a href="ContactUs/contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- Search bar on the right -->
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search...">
+      <button class="search-icon" onclick="searchPage()">🔍︎</button>
+    </div>
+
+  </div>
+</header>
+
+    <!--Searchable content-->
+    <main id="mainContent">
+
+    <!--Welcome Page-->
+    <div class="welcome-page">
+      <div class="welcome-text" style="height: 1000px; text-align: center; padding-top: 700px;">
+      <p><b>Welcome to </b><br> </p>
+      <h1 id="main-text">
+        Chu Inyoung Administrative Office
+        <span class="sr-only">- Startup & Business Consulting in Asia</span>
+      </h1>
+      <p><b>We are a problem-solving company that helps public and private <br>companies continue to grow and generate stable profits.</b></p>
+      </div>
+    </div>
+
+    <!--Company Portfolio-->
+    <div class="portfolio-page" id="company-portfolio">
+      <!-- Left: Text -->
+      <div class="overview-text">
+        <h1 id="overview-header">Overview</h1>
+        <p><!--Write Here--> We have Korean public institutions, private companies, and foreign<br></p> 
+        <p><!--Write Here--> companies as our clients. We focus on their continuous growth, revenue<br></p>
+        <p><!--Write Here--> generation, and problem solving. We go beyond Korea to become the best<br></p>
+        <p><!--Write Here--> professional problem-solving consulting firm in Asia.<br><br></p>
+        <p><!--Write Here--> We have a large portfolio in acting on behalf of customers' complaints to</p>
+        <p><!--Write Here--> administrative agencies, including foreign visas, medical devices, finance,<br></p>
+        <p><!--Write Here--> and information and communication permits.</p>
+      </div>
+      <!-- Right: Image -->
+      <div class="portfolio-image">
+        <img src="images/dylan-gillis-KdeqA3aTnBY-unsplash.jpg" alt="Consulting Success in Korea" loading="lazy">
+      </div>
+    </div>
+
+<div class="index-L-shape">
+  <div class="index-L-horizontal"></div>
+  <div class="index-L-vertical"></div>
+</div>
+
+    <!--Footer (This is always at the bottom!)-->
+<footer class="footer">
+  <div class="footer-content">
+    <!-- Overview: now scrolls to the portfolio section -->
+    <div class="footer-column">
+      <h4><a href="#company-portfolio">Overview</a></h4> <!-- EDITED -->
+    </div>
+    <!-- Our People (unchanged) -->
+    <div class="footer-column">
+      <h4><a href="OurPeople/people.html">Our People</a></h4>
+    </div>
+    <!-- Our Portfolios: now redirects to portfolio.html -->
+    <div class="footer-column">
+      <h4><a href="OurPortfolios/portfolio.html">Our Portfolios</a></h4> <!-- EDITED -->
+    </div>
+    <!-- Our Insights (unchanged) -->
+    <div class="footer-column">
+      <h4><a href="OurInsights/insights.html">Our Insights</a></h4>
+    </div>
+    <!-- Careers (unchanged) -->
+    <div class="footer-column">
+      <h4><a href="Careers/careers.html">Careers</a></h4>
+    </div>
+    <!-- Contact Us (unchanged) -->
+    <div class="footer-column">
+      <h4><a href="ContactUs/contact.html">Contact Us</a></h4>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 Chu Inyoung Administrative Office &amp; Chujin Factory Co., Ltd.
+  </div>
+</footer>
+
+    <script src="script.js"></script>
+    </main>
+</body>
+</html>

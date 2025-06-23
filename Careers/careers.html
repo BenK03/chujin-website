@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Careers | Chu Inyoung Administrative Office</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Join Chujin Gongjang Corp’s team: career opportunities in visa consulting, business licensing & administrative advisory with growth and impact.">
+
+  <meta name="keywords" content="채용, recruiting, hiring, application, job">
+
+  <link rel="stylesheet" href="careers.css">
+  <link rel="stylesheet" href="../style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:wght@300;400;600&display=swap" rel="stylesheet"> <!--Imported Font-->
+  <link rel="icon" type="image/x-icon" href="../images/KakaoTalk_20250602_122832236.jpg"> <!--Logo Icon-->
+</head>
+
+<body>
+<!--Copied Header-->
+  <header class="top-header">
+    <div class="header-inner">
+
+      <div class="header-left">
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="image-text">
+          <h2 id="Header">
+            <a href="../index.html">Chu Inyoung Administrative Office<br>&amp; Chujin Factory Co., Ltd.</a>
+          </h2>
+        </div>
+      </div>
+      <!-- NAV BAR (center) -->
+      <nav class="nav-bar">
+        <ul class="nav-links">
+          <li><a href="../index.html#company-portfolio">Overview</a></li>
+          <li><a href="../OurPeople/people.html">Our People</a></li>
+          <li><a href="../OurPortfolios/portfolio.html">Our Portfolios</a></li>
+          <li><a href="../OurInsights/insights.html">Our Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="../ContactUs/contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- Search bar on the right -->
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button class="search-icon" onclick="searchPage()">🔍︎</button>
+      </div>
+
+    </div>
+  </header>
+
+<!--Searchable content-->
+<main id="mainContent">
+<!--Copied Header-->
+
+<div class="careers-hero">
+  <img src="../images/careers.jpg" alt="Chujin Office" class="careers-hero-img" loading="lazy">
+  <div class="careers-hero-text">
+    <h1>
+      Careers at Chujin Factory
+      <span class="sr-only">– Consulting Careers & Opportunities in Asia</span>
+    </h1>
+    <b>
+    <p>
+      We are pursuing the world's best problem-solving consulting firm. Join our company and solve our customers' problems with the smartest and most competitive talents.
+    </p>
+    <p>
+      Please send us your resume. We are always open to hiring smart and competitive people.
+    </p>
+    </b>
+  </div>
+</div>
+
+<div class="careers-L-shape">
+  <div class="L-horizontal"></div>
+  <div class="L-vertical"></div>
+</div>
+
+<section class="careers-description">
+  <p class="career-categories">
+    <strong>Category:</strong><br>
+    Management Consulting / Analytics, Data & Research / SNS & Marketing / Operations / Design / <br>Human Resources / Technology & Engineering
+  </p>
+</section>
+
+<section class="resume-form-section">
+  <form action="https://formsubmit.co/chuiy@naver.com" method="POST" enctype="multipart/form-data" class="resume-form">
+    <input type="hidden" name="_captcha" value="false">
+
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+
+    <select name="category" required>
+      <option disabled selected>Select a Category</option>
+      <option>Management Consulting</option>
+      <option>Analytics, Data & Research</option>
+      <option>SNS & Marketing</option>
+      <option>Operations</option>
+      <option>Design</option>
+      <option>Human Resources</option>
+      <option>Technology & Engineering</option>
+    </select>
+
+    <input type="file" name="attachment" accept=".pdf,.doc,.docx" required>
+    <textarea name="message" placeholder="Additional Message (Optional)"></textarea>
+
+    <button type="submit">Submit Resume</button>
+  </form>
+</section>
+
+<!--Copied Footer-->
+<!--Footer (This is always at the bottom!)-->
+<footer class="footer">
+  <div class="footer-content">
+    <!-- Overview: now scrolls to the portfolio section -->
+    <div class="footer-column">
+      <h4><a href="../index.html#company-portfolio">Overview</a></h4><!-- EDITED -->
+    </div>
+    <!-- Our People (unchanged) -->
+    <div class="footer-column">
+      <h4><a href="../OurPeople/people.html">Our People</a></h4>
+    </div>
+    <!-- Our Portfolios: now redirects to portfolio.html -->
+    <div class="footer-column">
+      <h4><a href="../OurPortfolios/portfolio.html">Our Portfolios</a></h4> <!-- EDITED -->
+    </div>
+    <!-- Our Insights (unchanged) -->
+    <div class="footer-column">
+      <h4><a href="../OurInsights/insights.html">Our Insights</a></h4>
+    </div>
+    <!-- Careers (unchanged) -->
+    <div class="footer-column">
+      <h4><a href="careers.html">Careers</a></h4>
+    </div>
+    <!-- Contact Us (unchanged) -->
+    <div class="footer-column">
+      <h4><a href="../ContactUs/contact.html">Contact Us</a></h4>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 Chu Inyoung Administrative Office &amp; Chujin Factory Co., Ltd.
+  </div>
+</footer>
+    <script src="../script.js"></script>
+</main>
+<!--Copied Footer-->
+
+</body>
+</html>
