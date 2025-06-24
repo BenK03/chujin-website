@@ -218,18 +218,18 @@ def delete_press(pid):
     return '', 204
 
 
-# ─── Serve Portfolio Admin ───
-@app.route('/secured/portfolios/<path:filename>')
+# ─── Serve Admin ───
+@app.route('/OurPortfolios/secured/<path:filename>')
 def serve_portfolios_admin(filename):
-    return send_from_directory('OurPortfolios/secured', filename)
+    return send_from_directory('website/OurPortfolios/secured', filename)
 
-@app.route('/secured/<path:filename>')
-def serve_secured(filename):
-    return send_from_directory('OurInsights/secured', filename)
+@app.route('/OurInsights/secured/<path:filename>')
+def serve_insights_admin(filename):
+    return send_from_directory('website/OurInsights/secured', filename)
 
-@app.route('/secured/press/<path:filename>')
+@app.route('/PressRelease/secured/<path:filename>')
 def serve_press_admin(filename):
-    return send_from_directory('PressRelease/secured', filename)
+    return send_from_directory('website/PressRelease/secured', filename)
 
 @app.route('/pressimages/<filename>')
 def serve_press_image(filename):
