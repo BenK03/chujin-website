@@ -112,7 +112,7 @@
 </main>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    fetch('http://127.0.0.1:5000/api/press')
+    fetch("https://chujin-backend-gcs1.onrender.com/api/press")
       .then(res => res.json())
       .then(pressItems => {
         const container = document.querySelector('.slideshow-container');

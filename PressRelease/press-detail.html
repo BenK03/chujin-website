@@ -93,7 +93,7 @@
   if (!id) {
     detail.innerText = 'No Insight ID provided.';
   } else {
-    fetch(`http://127.0.0.1:5000/api/press/${id}`)
+    fetch(`https://chujin-backend-gcs1.onrender.com/api/press/${id}`)
       .then(r => r.json())
       .then(p => {
         let html = `
