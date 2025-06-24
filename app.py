@@ -224,22 +224,22 @@ from flask import send_from_directory
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-@app.route('/OurPortfolios/secured/<path:filename>')
+@app.route('/secured/<path:filename>')
+def serve_secured(filename):
+    return send_from_directory('OurInsights/secured', filename)
+
+@app.route('/secured/portfolios/<path:filename>')
 def serve_portfolios_admin(filename):
-    return send_from_directory(os.path.join(BASE_DIR, 'website', 'OurPortfolios', 'secured'), filename)
+    return send_from_directory('OurPortfolios/secured', filename)
 
-@app.route('/OurInsights/secured/<path:filename>')
-def serve_insights_admin(filename):
-    return send_from_directory(os.path.join(BASE_DIR, 'website', 'OurInsights', 'secured'), filename)
-
-@app.route('/PressRelease/secured/<path:filename>')
+@app.route('/secured/press/<path:filename>')
 def serve_press_admin(filename):
-    return send_from_directory(os.path.join(BASE_DIR, 'website', 'PressRelease', 'secured'), filename)
+    return send_from_directory('PressRelease/secured', filename)
 
-
-@app.route('/pressimages/<filename>')
-def serve_press_image(filename):
+@app.route('/pressimages/<path:filename>')
+def serve_press_images(filename):
     return send_from_directory('pressimages', filename)
+
 
 
 class Post(db.Model):
