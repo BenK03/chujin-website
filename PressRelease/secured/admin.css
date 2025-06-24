@@ -1,0 +1,76 @@
+/* Center the admin container and constrain width */
+.admin-page .insight-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Center the headings */
+.admin-page h1,
+.admin-page h2 {
+  text-align: center;
+}
+
+/* Style the form labels and fields */
+.admin-page #create-post label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.admin-page #postForm input,
+.admin-page #postForm textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 0.25rem;
+}
+
+/* Make the content textarea extra tall */
+.admin-page #postForm textarea {
+  min-height: 200px;
+}
+
+/* Style the submit button */
+.admin-page #postForm button {
+  display: block;
+  margin: 1.5rem auto 0;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #00a651;
+  color: #fff;
+}
+
+/* Style the existing posts list */
+.admin-page #posts-list ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+.admin-page #posts-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+
+/* Style delete buttons */
+.admin-page #posts-list li .deleteBtn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #e74c3c;
+  color: #fff;
+}

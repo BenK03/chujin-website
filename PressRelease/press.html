@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Our Insights | Chu Inyoung Administrative Office</title>
+  <title>Press Release | Chu Inyoung Administrative Office</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Gain insights from Chujin Gongjang Corp: expert analysis on visa policies, administrative advisory best practices & business strategy trends.">
+  <meta name="description" content="<!--WRITE HERE-->">
 
-  <meta name="keywords" content="환율, exchange rate, world economy, korea economy, 경제">
+  <meta name="keywords" content="<!--WRITE HERE-->">
   
-  <link rel="stylesheet" href="insights.css">
+  <link rel="stylesheet" href="press.css">
   <link rel="stylesheet" href="../style.css">
   <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:wght@300;400;600&display=swap" rel="stylesheet"> <!--Imported Font-->
   <link rel="icon" type="image/x-icon" href="../images/KakaoTalk_20250602_122832236.jpg"> <!--Logo Icon-->
@@ -34,8 +34,8 @@
           <li><a href="../index.html#company-portfolio">Overview</a></li>
           <li><a href="../OurPeople/people.html">Our People</a></li>
           <li><a href="../OurPortfolios/portfolio.html">Our Portfolios</a></li>
-          <li><a href="insights.html">Our Insights</a></li>
-          <li><a href="../PressRelease/press.html">Press Release</a></li>
+          <li><a href="../OurInsights/insights.html">Our Insights</a></li>
+          <li><a href="press.html">Press Release</a></li>
           <li><a href="../Careers/careers.html">Careers</a></li>
           <li><a href="../ContactUs/contact.html">Contact Us</a></li>
         </ul>
@@ -53,10 +53,10 @@
 <main id="mainContent">
 
 <div class="insights-welcome">
-  <img src="../images/OurInsightsCover.jpg" alt="currency exchange" class="insights-banner-img" loading="lazy">
+  <img src="../images/press.jpg" alt="currency exchange" class="insights-banner-img" loading="lazy">
   <div class="insights-welcome-text">
     <h1>
-      Our Insights
+      Press Release
       <span class="sr-only">– Consulting Insights & Strategy in Asia</span>
     </h1>
 
@@ -89,11 +89,11 @@
     </div>
     <!-- Our Insights (unchanged) -->
     <div class="footer-column">
-      <h4><a href="insights.html">Our Insights</a></h4>
+      <h4><a href="../OurInsights/insights.html">Our Insights</a></h4>
     </div>
     <!-- Press Release -->
     <div class="footer-column">
-      <h4><a href="../PressRelease/press.html">Press Release</a></h4>
+      <h4><a href="press.html">Press Release</a></h4>
     </div>
     <!-- Careers (unchanged) -->
     <div class="footer-column">
@@ -110,20 +110,17 @@
 </footer>
     <script src="../script.js"></script>
 </main>
-<!--Copied Footer-->
 <script>
-  // When the page loads, fetch all posts
   document.addEventListener('DOMContentLoaded', () => {
-    fetch("https://chujin-backend-gcs1.onrender.com/api/posts")
+    fetch('http://127.0.0.1:5000/api/press')
       .then(res => res.json())
-      .then(posts => {
+      .then(pressItems => {
         const container = document.querySelector('.slideshow-container');
-        // Clear existing slides (if any)
         container.innerHTML = '';
-        // For each post, build the slide markup
-        posts.slice().reverse().forEach(p => {
+        pressItems.slice().reverse().forEach(p => {
           const link = document.createElement('a');
-          link.href = `insight-detail.html?id=${p.id}`;
+          link.href = `./press-detail.html?id=${p.id}`;
+
           link.className = 'slide-link';
           link.innerHTML = `
             <div class="slide">
@@ -133,18 +130,17 @@
                   📝 <strong>Subject:</strong> ${p.subject}
                   ⏰ <strong>Time:</strong> ${p.time}
                   👤 <strong>Author:</strong> ${p.author}
+                  🔗 <strong>Link:</strong> <a href="${p.hyperlink}" target="_blank" rel="noopener noreferrer">Visit</a>
                 </div>
               </article>
             </div>
           `;
           container.appendChild(link);
         });
-
       })
-      .catch(err => console.error('Error fetching posts:', err));
+      .catch(err => console.error('Error loading press releases:', err));
   });
 </script>
 
 </body>
-
 </html>

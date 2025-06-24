@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Insight Detail</title>
+  <title>Press Release Detail</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="insights.css">
+  <link rel="stylesheet" href="press.css">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:wght@300;400;600&display=swap" rel="stylesheet"> <!--Imported Font-->
   <link rel="icon" type="image/x-icon" href="../images/KakaoTalk_20250602_122832236.jpg"> <!--Logo Icon-->
@@ -28,8 +28,8 @@
           <li><a href="../index.html#company-portfolio">Overview</a></li>
           <li><a href="../OurPeople/people.html">Our People</a></li>
           <li><a href="../OurPortfolios/portfolio.html">Our Portfolios</a></li>
-          <li><a href="insights.html">Our Insights</a></li>
-          <li><a href="../PressRelease/press.html">Press Release</a></li>
+          <li><a href="../OurInsights/insights.html">Our Insights</a></li>
+          <li><a href="press.html">Press Release</a></li>
           <li><a href="../Careers/careers.html">Careers</a></li>
           <li><a href="../ContactUs/contact.html">Contact Us</a></li>
         </ul>
@@ -65,11 +65,11 @@
         </div>
         <!-- Our Insights (unchanged) -->
         <div class="footer-column">
-          <h4><a href="insights.html">Our Insights</a></h4>
+          <h4><a href="../OurInsights/insights.html">Our Insights</a></h4>
         </div>
         <!-- Press Release -->
         <div class="footer-column">
-          <h4><a href="../PressRelease/press.html">Press Release</a></h4>
+          <h4><a href="press.html">Press Release</a></h4>
         </div>
         <!-- Careers (unchanged) -->
         <div class="footer-column">
@@ -85,31 +85,45 @@
     </div>
   </footer>
       <script src="../script.js"></script>
-  <script>
-    const params = new URLSearchParams(location.search);
-    const id = params.get('id');
-    const detail = document.getElementById('detail');
-    if (!id) {
-      detail.innerText = 'No Insight ID provided.';
-    } else {
-      fetch(`https://chujin-backend-gcs1.onrender.com/api/posts/${id}`)
-        .then(r => r.json())
-        .then(p => {
-          detail.innerHTML = `
-            <article class="insight-article">
-                <div class="insight-meta">
-                <p>🗂️ <strong>Category:</strong> ${p.category}</p>
-                <p>📝 <strong>Subject:</strong> ${p.subject}</p>
-                <p>⏰ <strong>Time:</strong> ${p.time}</p>
-                <p>👤 <strong>Author:</strong> ${p.author}</p>
-                </div>
-              <div class="insight-content">${p.content}</div>
-            </article>`;
-        })
-        .catch(() => {
-          detail.innerText = 'Insight not found.';
-        });
-    }
-  </script>
+<script>
+  const params = new URLSearchParams(location.search);
+  const id = params.get('id');
+  const detail = document.getElementById('detail');
+
+  if (!id) {
+    detail.innerText = 'No Insight ID provided.';
+  } else {
+    fetch(`http://127.0.0.1:5000/api/press/${id}`)
+      .then(r => r.json())
+      .then(p => {
+        let html = `
+          <article class="insight-article">
+            <div class="insight-meta">
+              <p>🗂️ <strong>Category:</strong> ${p.category}</p>
+              <p>📝 <strong>Subject:</strong> ${p.subject}</p>
+              <p>⏰ <strong>Time:</strong> ${p.time}</p>
+              <p>👤 <strong>Author:</strong> ${p.author}</p>
+              <p>🔗 <strong>Hyperlink:</strong> <a href="${p.hyperlink}" target="_blank">${p.hyperlink}</a></p>
+            </div>
+            <div class="insight-content">${p.content}</div>
+          </article>
+        `;
+
+        if (p.image_filename) {
+          html += `
+            <div style="margin-top: 2rem;">
+              <img src="http://127.0.0.1:5000/pressimages/${p.image_filename}" style="max-width: 100%; border-radius: 8px;">
+            </div>
+          `;
+        }
+
+        detail.innerHTML = html;
+      })
+      .catch(() => {
+        detail.innerText = 'Error loading press release.';
+      });
+  }
+</script>
+
 </body>
 </html>

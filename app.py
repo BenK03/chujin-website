@@ -133,6 +133,91 @@ def delete_portfolio(pid):
     db.session.commit()
     return '', 204
 
+@app.route('/api/press/<int:pid>', methods=['GET'])
+def get_press(pid):
+    p = PressRelease.query.get_or_404(pid)
+    return jsonify({
+        'id':        p.id,
+        'category':  p.category,
+        'subject':   p.subject,
+        'time':      p.time,
+        'author':    p.author,
+        'content':   p.content,
+        'hyperlink': p.hyperlink,
+        'image_filename': p.image_filename
+    })
+
+
+@app.route('/api/press', methods=['GET'])
+def get_all_press():
+    items = PressRelease.query.all()
+    return jsonify([{
+        'id':        p.id,
+        'category':  p.category,
+        'subject':   p.subject,
+        'time':      p.time,
+        'author':    p.author,
+        'content':   p.content,
+        'hyperlink': p.hyperlink,
+        'image_filename': p.image_filename  # ✅ Include image filename
+    } for p in items])
+
+
+@app.route('/api/press', methods=['POST'])
+def create_press():
+    category  = request.form.get('category')
+    subject   = request.form.get('subject')
+    time      = request.form.get('time')
+    author    = request.form.get('author')
+    content   = request.form.get('content')
+    hyperlink = request.form.get('hyperlink')  # required
+    image     = request.files.get('image')     # optional
+
+    if not all([category, subject, time, author, content, hyperlink]):
+        return jsonify({'error': 'Missing required fields'}), 400
+
+    image_filename = None
+    if image:
+        from werkzeug.utils import secure_filename
+        import os
+        filename = secure_filename(image.filename)
+        filepath = os.path.join('pressimages', filename)
+        image.save(filepath)
+        image_filename = filename
+
+    p = PressRelease(
+        category=category,
+        subject=subject,
+        time=time,
+        author=author,
+        content=content,
+        hyperlink=hyperlink,
+        image_filename=image_filename
+    )
+    db.session.add(p)
+    db.session.commit()
+
+    return jsonify({
+        'id': p.id,
+        'category': p.category,
+        'subject': p.subject,
+        'time': p.time,
+        'author': p.author,
+        'content': p.content,
+        'hyperlink': p.hyperlink,
+        'image_filename': p.image_filename
+    }), 201
+
+
+
+@app.route('/api/press/<int:pid>', methods=['DELETE'])
+def delete_press(pid):
+    p = PressRelease.query.get_or_404(pid)
+    db.session.delete(p)
+    db.session.commit()
+    return '', 204
+
+
 # ─── Serve Portfolio Admin ───
 @app.route('/secured/portfolios/<path:filename>')
 def serve_portfolios_admin(filename):
@@ -141,6 +226,15 @@ def serve_portfolios_admin(filename):
 @app.route('/secured/<path:filename>')
 def serve_secured(filename):
     return send_from_directory('OurInsights/secured', filename)
+
+@app.route('/secured/press/<path:filename>')
+def serve_press_admin(filename):
+    return send_from_directory('PressRelease/secured', filename)
+
+@app.route('/pressimages/<filename>')
+def serve_press_image(filename):
+    return send_from_directory('pressimages', filename)
+
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -157,9 +251,21 @@ class Portfolio(db.Model):
     author  = db.Column(db.String(100), nullable=False)
     content = db.Column(db.Text,        nullable=False)
 
+class PressRelease(db.Model):
+    id            = db.Column(db.Integer, primary_key=True)
+    category      = db.Column(db.String(100), nullable=False)
+    subject       = db.Column(db.String(200), nullable=False)
+    time          = db.Column(db.String(50), nullable=False)
+    author        = db.Column(db.String(100), nullable=False)
+    content       = db.Column(db.Text, nullable=False)
+    hyperlink     = db.Column(db.String(300), nullable=True)
+    image_filename = db.Column(db.String(300), nullable=True)  # ✅ New field
+
+
+
 with app.app_context():
     db.create_all()
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
