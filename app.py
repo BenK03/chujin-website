@@ -218,7 +218,8 @@ def delete_press(pid):
     return '', 204
 
 
-# ─── Serve Admin ───
+# ─── Serve Admin Panels ───
+
 @app.route('/OurPortfolios/secured/<path:filename>')
 def serve_portfolios_admin(filename):
     return send_from_directory('website/OurPortfolios/secured', filename)
