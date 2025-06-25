@@ -2,9 +2,44 @@ from flask import send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 from flask_cors import CORS
+from flask import Flask, request, jsonify, send_from_directory, session, redirect, url_for, render_template_string
 
 app = Flask(__name__)
-CORS(app)  # ← enable CORS on all routes
+CORS(app)
+app.secret_key = "chujin123"  # 🔐 required for session security
+
+LOGIN_HTML = """
+<form method="POST">
+  <input name="username" placeholder="Username">
+  <input name="password" type="password" placeholder="Password">
+  <button type="submit">Login</button>
+</form>
+"""
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        u, p = request.form['username'], request.form['password']
+        if u == 'admin' and p == 'chujin123':
+            session['logged_in'] = True
+            return redirect('/admin-dashboard')
+        return "Invalid credentials", 401
+    return render_template_string(LOGIN_HTML)
+
+@app.route('/admin-dashboard')
+def admin_dashboard():
+    if not session.get('logged_in'):
+        return redirect('/login')
+    return render_template_string("""
+        <h2>Welcome to the Admin Dashboard</h2>
+        <ul>
+          <li><a href="/secured/supersecretpassword123(admin).html">Insights Panel</a></li>
+          <li><a href="/secured/portfolios/supersecretpassword123(portfolio).html">Portfolios Panel</a></li>
+          <li><a href="/secured/press/supersecretpassword123(press).html">Press Releases Panel</a></li>
+        </ul>
+        <a href="/logout">Logout</a>
+    """)
+
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///insights.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -226,14 +261,20 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 @app.route('/secured/<path:filename>')
 def serve_secured(filename):
+    if not session.get('logged_in'):
+        return redirect('/login')
     return send_from_directory('OurInsights/secured', filename)
 
 @app.route('/secured/portfolios/<path:filename>')
 def serve_portfolios_admin(filename):
+    if not session.get('logged_in'):
+        return redirect('/login')
     return send_from_directory('OurPortfolios/secured', filename)
 
 @app.route('/secured/press/<path:filename>')
 def serve_press_admin(filename):
+    if not session.get('logged_in'):
+        return redirect('/login')
     return send_from_directory('PressRelease/secured', filename)
 
 @app.route('/pressimages/<path:filename>')
@@ -271,6 +312,11 @@ class PressRelease(db.Model):
 
 with app.app_context():
     db.create_all()
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/login')
 
 
 if __name__ == '__main__':
