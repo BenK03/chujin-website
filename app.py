@@ -22,7 +22,7 @@ LOGIN_HTML = """
 def login():
     if request.method == 'POST':
         u, p = request.form['username'], request.form['password']
-        if u == 'alanchu' and p == '2010':
+        if u == os.environ.get("ADMIN_USER") and p == os.environ.get("ADMIN_PASS"):
             session['logged_in'] = True
             return redirect('/admin-dashboard')
         return "Invalid credentials", 401
