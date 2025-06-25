@@ -103,7 +103,7 @@
               <p>📝 <strong>Subject:</strong> ${p.subject}</p>
               <p>⏰ <strong>Time:</strong> ${p.time}</p>
               <p>👤 <strong>Author:</strong> ${p.author}</p>
-              <p>🔗 <strong>Hyperlink:</strong> <a href="${p.hyperlink}" target="_blank">${p.hyperlink}</a></p>
+              ${p.hyperlink ? `<p>🔗 <strong>Hyperlink:</strong> <a href="${p.hyperlink}" target="_blank">${p.hyperlink}</a></p>` : ''}
             </div>
             <div class="insight-content">${p.content}</div>
           </article>

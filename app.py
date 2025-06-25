@@ -170,10 +170,10 @@ def create_press():
     time      = request.form.get('time')
     author    = request.form.get('author')
     content   = request.form.get('content')
-    hyperlink = request.form.get('hyperlink')  # required
+    hyperlink = request.form.get('hyperlink') or '' # required
     image     = request.files.get('image')     # optional
 
-    if not all([category, subject, time, author, content, hyperlink]):
+    if not all([category, subject, time, author, content]):
         return jsonify({'error': 'Missing required fields'}), 400
 
     image_filename = None
