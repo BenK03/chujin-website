@@ -3,10 +3,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 from flask_cors import CORS
 from flask import Flask, request, jsonify, send_from_directory, session, redirect, url_for, render_template_string
+import os
 
 app = Flask(__name__)
 CORS(app)
-app.secret_key = "chujin123"  # 🔐 required for session security
+app.secret_key = os.environ.get("SECRET_KEY")
+
 
 LOGIN_HTML = """
 <form method="POST">
@@ -20,7 +22,7 @@ LOGIN_HTML = """
 def login():
     if request.method == 'POST':
         u, p = request.form['username'], request.form['password']
-        if u == 'admin' and p == 'chujin123':
+        if u == 'alanchu' and p == '2010':
             session['logged_in'] = True
             return redirect('/admin-dashboard')
         return "Invalid credentials", 401
